@@ -10,7 +10,8 @@ body{
    padding: 2%;
    background-color: hsl(0, 0%, 100%);
    border-radius: 14px;
-   margin: 0;
+   width: 45%;
+   max-width: 40%;
 }
 .tarjeta .imagen{
  display: flex;
@@ -157,4 +158,67 @@ span{
 }
 hr{
     width: 100%;
+}
+/* Página responsive para móvil */
+@media(max-width:412px){
+    /* 1. BODY */
+    body{
+        margin: 0;
+        padding: 0;
+        align-items: flex-start; /* Desactivamos el centrado vertical en móvil */
+        min-height: 0;
+        overflow-x: hidden;
+    }
+    
+    /* 2. TARJETA - Ocupa todo el ancho sin bordes ni límites */
+    .tarjeta{
+        width: 100%;
+        max-width: none;
+        padding: 0; /* Eliminamos el padding de la tarjeta para que el contenido se extienda */
+        border-radius: 0;
+        margin: 0;
+    }
+    
+    /* 3. IMAGEN - Se ajusta al borde superior de la pantalla */
+    .introduccion .imagen{
+        padding: 0;
+    }
+    .introduccion img{
+        border-radius: 0;
+        height: 220px;
+    }
+
+    /* 4. CONTENIDO INTERNO - APLICAMOS UN NUEVO PADDING UNIFORME */
+    .introduccion,
+    .tiempo,
+    .ingredientes,
+    .instrucciones,
+    .nutricion {
+        /* Aplicamos un padding lateral uniforme a TODOS los bloques de contenido */
+        padding: 0 0px; /* Espacio de 30px a izquierda y derecha */
+    }
+
+    /* 5. TITULO - Centramos y eliminamos los límites innecesarios */
+    .introduccion h1{
+        /* ELIMINA estas tres líneas, son las que causaban el problema:
+        display: flex;
+        width: 45px;
+        height: auto;
+        */
+        text-align: left; /* Generalmente se alinea a la izquierda en móvil */
+        margin-top: 30px; /* Añade un espacio después de la imagen */
+    }
+    
+    /* 6. OTROS AJUSTES MÓVIL (para el resto del contenido) */
+    .preparacion {
+        /* Aseguramos que el contenedor de preparación ocupe el espacio con el padding aplicado */
+        width: auto;
+        padding-left: 16px; /* Añadimos el padding que tenías antes si quieres margen interno */
+    }
+    .nutricion table {
+        width: 100%; /* Ajustamos la tabla para que ocupe el ancho del padding de 30px */
+    }
+    hr{
+        width: 90%;
+    }
 }
